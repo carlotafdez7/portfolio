@@ -1,5 +1,3 @@
-
-
 /* --------------------------------------------------------------------------
    6. Button
    -------------------------------------------------------------------------- */
@@ -9,14 +7,15 @@
 	background: var(--color-accent);
 	color: white;
 	font-weight: 600;
-	border-radius: 8px;
-	transition: background 0.3s, transform 0.3s;
+	border-radius: var(--radius-sm);
+	transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .btn:hover,
-.btn:focus {
+.btn:focus-visible {
 	background: var(--color-accent-hover);
 	transform: translateY(-2px);
+	box-shadow: var(--shadow-sm);
 }
 
 /* --------------------------------------------------------------------------
@@ -52,8 +51,9 @@
 .skill-card {
 	background: var(--color-bg);
 	padding: var(--space-md);
-	border-radius: 12px;
+	border-radius: var(--radius-md);
 	text-align: center;
+	box-shadow: var(--shadow-sm);
 }
 
 .skill-icon {
@@ -70,7 +70,7 @@
 .skill-bar {
 	height: 6px;
 	background: var(--color-bg-alt);
-	border-radius: 3px;
+	border-radius: 999px;
 	overflow: hidden;
 }
 
@@ -78,7 +78,7 @@
 	height: 100%;
 	width: 0;
 	background: var(--color-accent);
-	border-radius: 3px;
+	border-radius: 999px;
 	transition: width 1s var(--ease-out) 0.3s;
 }
 
@@ -109,18 +109,18 @@
 
 .project-card {
 	background: var(--color-bg-alt);
-	border-radius: 16px;
+	border-radius: var(--radius-lg);
 	overflow: hidden;
 	transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project-card:hover {
 	transform: translateY(-8px);
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+	box-shadow: var(--shadow-md);
 }
 
 .project-image {
-	aspect-ratio: 4/3;
+	aspect-ratio: 4 / 3;
 	overflow: hidden;
 }
 
@@ -160,7 +160,7 @@
 	font-size: var(--text-xs);
 	padding: 4px 8px;
 	background: var(--color-bg);
-	border-radius: 4px;
+	border-radius: var(--radius-sm);
 	color: var(--color-accent);
 }
 
@@ -190,7 +190,8 @@
 	transition: color 0.3s;
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.social-links a:focus-visible {
 	color: var(--color-accent);
 }
 
@@ -221,175 +222,92 @@
 	transition: background 0.3s, transform 0.3s;
 }
 
-.back-to-top:hover {
+.back-to-top:hover,
+.back-to-top:focus-visible {
 	background: var(--color-accent);
 	transform: translateY(-3px);
 }
 
 /* --------------------------------------------------------------------------
    11. SCROLL REVEAL ANIMATIONS (IntersectionObserver-driven)
-
-   🎓 THE CSS + JAVASCRIPT PARTNERSHIP:
-   The JavaScript IntersectionObserver (in main.js) adds classes when elements
-   enter the viewport. CSS handles the actual animation via transitions.
-
-   This separation of concerns is powerful:
-   - JS: "When should the animation start?" (viewport detection)
-   - CSS: "How should the animation look?" (visual effects)
-
-   📐 THE PATTERN:
-   1. Elements start with opacity: 0 and transform: translateY(30px)
-   2. JavaScript adds .visible class when element enters viewport
-   3. CSS transitions smoothly animate to opacity: 1 and translateY(0)
-
-   ⚡ PERFORMANCE NOTE:
-   We ONLY animate `transform` and `opacity` because these properties:
-   - Don't trigger layout recalculation (expensive!)
-   - Don't trigger repaint (also expensive!)
-   - Run on the GPU compositor thread (fast! 60fps!)
-
-   NEVER animate: width, height, margin, padding, top, left, etc.
-   These trigger layout and will cause jank (stuttering).
    -------------------------------------------------------------------------- */
 
 /*
  * SINGLE ELEMENT REVEAL
- *
- * Use class="animate-on-scroll" on any element you want to fade in.
- * JavaScript will add .visible when it scrolls into view.
  */
 .animate-on-scroll {
-	opacity: 0;                      /* Start invisible */
-	transform: translateY(30px);     /* Start 30px below final position */
-
-	/*
-	 * TRANSITION SHORTHAND EXPANDED:
-	 *
-	 * transition: [property] [duration] [timing-function]
-	 *
-	 * We're transitioning TWO properties (opacity AND transform).
-	 * Both use var(--duration-normal) = 0.6s
-	 * Both use var(--ease-out) = our custom easing curve
-	 */
-	transition: opacity var(--duration-normal) var(--ease-out),
-	            transform var(--duration-normal) var(--ease-out);
+	opacity: 0;
+	transform: translateY(30px);
+	transition:
+		opacity var(--duration-normal) var(--ease-out),
+		transform var(--duration-normal) var(--ease-out);
 }
 
 .animate-on-scroll.visible {
-	opacity: 1;              /* Fade in */
-	transform: translateY(0); /* Move to final position */
+	opacity: 1;
+	transform: translateY(0);
 }
 
 /* --------------------------------------------------------------------------
    STAGGERED REVEAL ANIMATION
-
-   🎓 WHAT IS STAGGERING?
-   Staggering means animating children elements one after another instead of
-   all at once. This creates a "cascade" or "wave" effect that draws the eye
-   and feels more dynamic than everything appearing simultaneously.
-
-   📐 HOW IT WORKS:
-   1. Parent has [data-reveal-stagger] attribute
-   2. All children start invisible (opacity: 0, translateY)
-   3. When parent gets .revealed class, children animate with increasing delays
-   4. transition-delay creates the stagger: 0.1s, 0.2s, 0.3s, etc.
-
-   💡 DATA ATTRIBUTES:
-   We use data-* attributes instead of classes because:
-   - They're semantic: "this element reveals with stagger"
-   - They can hold values: data-stagger-delay="0.2s" (future enhancement)
-   - They're easily queryable: [data-reveal-stagger]
    -------------------------------------------------------------------------- */
-[data-reveal-stagger] > * {
+[data-reveal-stagger]>* {
 	opacity: 0;
 	transform: translateY(20px);
-	transition: opacity 0.5s var(--ease-out),
-	            transform 0.5s var(--ease-out);
+	transition:
+		opacity 0.5s var(--ease-out),
+		transform 0.5s var(--ease-out);
 }
 
-/*
- * STAGGER DELAYS USING :nth-child
- *
- * Each child gets a progressively longer delay.
- * Child 1: 0.1s delay, Child 2: 0.2s delay, etc.
- *
- * This creates the "wave" effect as elements appear one by one.
- *
- * ⚠️ LIMITATION: This only works for up to 6 children. For dynamic
- * content with unknown child count, you'd need JavaScript to set delays.
- */
-[data-reveal-stagger].revealed > *:nth-child(1) { transition-delay: 0.1s; }
-[data-reveal-stagger].revealed > *:nth-child(2) { transition-delay: 0.2s; }
-[data-reveal-stagger].revealed > *:nth-child(3) { transition-delay: 0.3s; }
-[data-reveal-stagger].revealed > *:nth-child(4) { transition-delay: 0.4s; }
-[data-reveal-stagger].revealed > *:nth-child(5) { transition-delay: 0.5s; }
-[data-reveal-stagger].revealed > *:nth-child(6) { transition-delay: 0.6s; }
+[data-reveal-stagger].revealed>*:nth-child(1) {
+	transition-delay: 0.1s;
+}
 
-[data-reveal-stagger].revealed > * {
+[data-reveal-stagger].revealed>*:nth-child(2) {
+	transition-delay: 0.2s;
+}
+
+[data-reveal-stagger].revealed>*:nth-child(3) {
+	transition-delay: 0.3s;
+}
+
+[data-reveal-stagger].revealed>*:nth-child(4) {
+	transition-delay: 0.4s;
+}
+
+[data-reveal-stagger].revealed>*:nth-child(5) {
+	transition-delay: 0.5s;
+}
+
+[data-reveal-stagger].revealed>*:nth-child(6) {
+	transition-delay: 0.6s;
+}
+
+[data-reveal-stagger].revealed>* {
 	opacity: 1;
 	transform: translateY(0);
 }
 
 /* --------------------------------------------------------------------------
    12. ACCESSIBILITY: REDUCED MOTION
-
-   🎓 WHY THIS MATTERS:
-   Some users experience motion sickness, vestibular disorders, or seizures
-   triggered by animations. Others simply find motion distracting.
-
-   The `prefers-reduced-motion` media query respects user preferences set in
-   their operating system settings:
-   - macOS: System Preferences → Accessibility → Display → Reduce motion
-   - Windows: Settings → Ease of Access → Display → Show animations
-   - iOS: Settings → Accessibility → Motion → Reduce Motion
-
-   ⚖️ LEGAL REQUIREMENT:
-   WCAG 2.1 Success Criterion 2.3.3 requires respecting user motion preferences.
-   Ignoring this can expose you to accessibility lawsuits.
-
-   📐 OUR APPROACH:
-   When reduced motion is preferred, we:
-   1. Disable ALL animations and transitions (near-instant 0.01ms)
-   2. Make animated elements immediately visible (no waiting)
-   3. Disable smooth scrolling (instant jumps instead)
-
-   💡 WHY 0.01ms INSTEAD OF 0ms?
-   Some browsers have bugs with 0ms duration. 0.01ms is effectively instant
-   but avoids those edge cases.
-
-   🔗 LEARN MORE: https://web.dev/prefers-reduced-motion/
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-	/*
-	 * NUCLEAR OPTION: Disable ALL animations/transitions globally
-	 *
-	 * The !important ensures this overrides any other animation styles.
-	 * This is one of the few legitimate uses of !important.
-	 */
+
 	*,
 	*::before,
 	*::after {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;  /* Instant scroll, no smooth */
+		scroll-behavior: auto !important;
 	}
 
-	/*
-	 * ENSURE ANIMATED CONTENT IS VISIBLE
-	 *
-	 * Without this, elements with opacity: 0 would stay invisible forever
-	 * since the animation that reveals them is now disabled.
-	 */
 	.animate-on-scroll,
-	[data-reveal-stagger] > * {
-		opacity: 1;        /* Fully visible */
-		transform: none;   /* No transform offset */
+	[data-reveal-stagger]>* {
+		opacity: 1;
+		transform: none;
 	}
 
-	/*
-	 * SKILL BARS: Show at full width immediately
-	 */
 	.skill-fill {
 		width: var(--fill);
 		transition: none;
@@ -401,7 +319,8 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
 	.nav-links {
-		display: none; /* Would be hamburger menu in production */
+		display: none;
+		/* Would be hamburger menu in production */
 	}
 
 	.footer .container {
