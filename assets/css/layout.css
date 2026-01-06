@@ -88,7 +88,7 @@ section[id] {
 .hero-bg {
 	position: absolute;
 	inset: 0;
-	background: #f5f5f5;
+	background: #161616;
 	z-index: -1;
 }
 
@@ -170,7 +170,7 @@ section[id] {
 
 .hero-track {
 	display: flex;
-	gap: var(--space-lg);
+	gap: var(--space-sm);
 	align-items: center;
 	height: 100%;
 	padding-left: var(--space-lg);
@@ -244,4 +244,150 @@ section[id] {
 	60% {
 		transform: rotate(45deg) translateY(5px);
 	}
+}
+
+/* --------------------------------------------------------------------------
+   7. About Section (FINAL)
+   Top: Text left + Photo right (with clear spacing)
+   Bottom: 6 skills full width
+   -------------------------------------------------------------------------- */
+
+.about {
+	background: var(--color-bg-alt);
+	padding-top: var(--space-3xl);
+}
+
+/* Shared container for intro + skills */
+.about-grid {
+	width: min(90%, 1100px);
+	margin-inline: auto;
+
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2xl);
+}
+
+/* ------------------------------
+   Intro row: text + photo
+   ------------------------------ */
+.about-intro {
+	display: grid;
+	align-items: center;
+
+	/* ✅ aire arriba del bloque (lo que habías perdido) */
+	margin-top: var(--space-2xl);
+
+	/* ✅ separación real entre columnas */
+	column-gap: 120px;
+	/* fuerza separación visible (puedes subir/bajar) */
+}
+
+/* Desktop layout: fixed photo column so right edge aligns */
+@media (min-width: 768px) {
+	.about-intro {
+		grid-template-columns: minmax(0, 1fr) 360px;
+		/* text | photo */
+	}
+}
+
+/* Text */
+.about-text {
+	max-width: 48ch;
+}
+
+.about-text p {
+	margin-bottom: var(--space-md);
+	font-size: var(--text-sm);
+	line-height: 1.7;
+	color: var(--color-text-muted);
+}
+
+/* Photo: pinned to the right edge */
+.about-photo {
+	justify-self: end;
+}
+
+/* ✅ asegúrate de que la imagen NO sea width:100% aquí */
+.about-photo img {
+	width: 360px;
+	height: 360px;
+	object-fit: cover;
+	object-position: center;
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-md);
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 767px) {
+	.about-intro {
+		grid-template-columns: 1fr;
+		row-gap: var(--space-xl);
+		column-gap: 0;
+		margin-top: var(--space-lg);
+	}
+
+	.about-photo {
+		justify-self: start;
+	}
+
+	.about-photo img {
+		width: 280px;
+		height: 280px;
+	}
+}
+
+/* ------------------------------
+   Skills (6 cards) full width
+   ------------------------------ */
+.skills-grid {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-lg);
+}
+
+@media (min-width: 1024px) {
+	.skills-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 640px) {
+	.skills-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Skill cards (no icons) */
+.skill-card {
+	background: var(--color-bg);
+	padding: var(--space-lg);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-sm);
+}
+
+.skill-card h3 {
+	font-size: var(--text-sm);
+	font-weight: 600;
+	margin-bottom: var(--space-sm);
+}
+
+/* Skill bars */
+.skill-bar {
+	height: 6px;
+	background: var(--color-bg-alt);
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.skill-fill {
+	height: 100%;
+	width: 0;
+	background: var(--color-accent);
+	border-radius: 999px;
+	transition: width 1s var(--ease-out) 0.3s;
+}
+
+[data-reveal-stagger].revealed .skill-fill {
+	width: var(--fill);
 }
