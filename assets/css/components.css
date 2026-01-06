@@ -103,7 +103,7 @@
 
 @media (min-width: 1024px) {
 	.projects-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
@@ -142,6 +142,7 @@
 .project-content h3 {
 	font-size: var(--text-lg);
 	margin-bottom: var(--space-sm);
+	color: rgb(0, 0, 0);
 }
 
 .project-content p {
@@ -162,6 +163,28 @@
 	background: var(--color-bg);
 	border-radius: var(--radius-sm);
 	color: var(--color-accent);
+}
+
+/* Projects full-width override */
+.projects .container {
+	width: min(96%, 1600px);
+}
+
+/* Tarjetas botones te llevan a sección*/
+.project-link {
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.project-link:focus-visible {
+	outline: 3px solid var(--color-accent);
+	outline-offset: 4px;
+}
+
+.project-card {
+	cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------
