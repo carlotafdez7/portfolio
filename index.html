@@ -17,6 +17,176 @@
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="./assets/css/index.css" />
 
+	<!-- Mobile-only responsive tweaks (keeps desktop unchanged) -->
+	<style>
+		/* keep button hidden on desktop */
+		.nav-toggle {
+			display: none;
+			border: 0;
+			background: transparent
+		}
+
+		/* accessibility helper */
+		.sr-only {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border: 0
+		}
+
+		@media (max-width: 767px) {
+
+			/* Nav: add toggle and mobile menu */
+			.nav-container {
+				position: relative;
+				align-items: center;
+				gap: .5rem;
+				padding: .5rem 1rem
+			}
+
+			.nav-toggle {
+				display: inline-flex;
+				background: none;
+				border: 0;
+				padding: .35rem;
+				align-items: center;
+				cursor: pointer
+			}
+
+			.nav-toggle .hamburger {
+				width: 20px;
+				height: 2px;
+				background: #ffffff;
+				position: relative;
+				display: inline-block;
+				transition: background .18s ease;
+			}
+
+			.nav-toggle .hamburger::before,
+			.nav-toggle .hamburger::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				width: 20px;
+				height: 2px;
+				background: #111;
+				transition: transform .22s ease;
+			}
+
+			.nav-toggle .hamburger::before {
+				top: -6px
+			}
+
+			.nav-toggle .hamburger::after {
+				top: 6px
+			}
+
+			/* transform into X when open */
+			.nav.open .hamburger {
+				background: transparent
+			}
+
+			.nav.open .hamburger::before {
+				transform: rotate(45deg) translate(4px, 4px)
+			}
+
+			.nav.open .hamburger::after {
+				transform: rotate(-45deg) translate(4px, -4px)
+			}
+
+			.nav-links {
+				display: none;
+				flex-direction: column;
+				gap: .5rem;
+				margin: 0;
+				padding: .75rem 1rem;
+				background: #fff;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 100%;
+				box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+				opacity: 0;
+				transition: opacity .18s ease, transform .18s ease;
+				transform: translateY(-6px);
+			}
+
+			.nav.open .nav-links {
+				display: flex;
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			/* Stack main sections for mobile */
+			.about-grid {
+				display: block;
+				padding: 1rem
+			}
+
+			.about-intro {
+				display: block
+			}
+
+			.about-photo img {
+				width: 140px;
+				height: auto;
+				border-radius: 6px;
+				margin-top: .75rem
+			}
+
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: .6rem;
+				padding: 1rem
+			}
+
+			.projects-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1rem;
+				padding: 1rem
+			}
+
+			/* Carousels: horizontal scroll with snap */
+			.hero-track,
+			.editorial-track,
+			.photo-track,
+			.illustration-track,
+			.branding-track {
+				display: flex;
+				gap: .75rem;
+				overflow-x: auto;
+				padding: .5rem 1rem;
+				scroll-snap-type: x mandatory;
+				-webkit-overflow-scrolling: touch
+			}
+
+			.hero-track img,
+			.editorial-track img,
+			.photo-track img,
+			.illustration-track img,
+			.branding-track img {
+				flex: 0 0 80%;
+				min-width: 65%;
+				scroll-snap-align: start;
+				border-radius: 6px
+			}
+
+			/* Responsive media/video */
+			.motion-media video {
+				width: 100%;
+				height: auto;
+				display: block
+			}
+		}
+	</style>
+
 	<script src="./assets/js/main.js" defer></script>
 </head>
 
@@ -28,7 +198,15 @@
 	<nav class="nav">
 		<div class="nav-container">
 			<a href="#" class="nav-logo">Portfolio</a>
-			<ul class="nav-links">
+
+			<!-- Added: mobile nav toggle (hidden on desktop via media query above) -->
+			<button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false"
+				aria-label="Toggle menu">
+				<span class="hamburger" aria-hidden="true"></span>
+				<span class="sr-only">Menu</span>
+			</button>
+
+			<ul id="primary-navigation" class="nav-links">
 				<li><a href="#hero">Home</a></li>
 				<li><a href="#about">About</a></li>
 				<li><a href="#projects">Projects</a></li>
@@ -559,7 +737,54 @@
 		</div>
 	</footer>
 
+	<!-- small script to toggle mobile nav -->
+	<script>
+		(function () {
+			const nav = document.querySelector('.nav');
+			const toggle = document.querySelector('.nav-toggle');
+			const navLinks = document.querySelector('#primary-navigation');
+			if (!nav || !toggle || !navLinks) return;
 
+			const closeMenu = () => {
+				nav.classList.remove('open');
+				toggle.setAttribute('aria-expanded', 'false');
+				navLinks.setAttribute('aria-hidden', 'true');
+			};
+
+			const openMenu = () => {
+				nav.classList.add('open');
+				toggle.setAttribute('aria-expanded', 'true');
+				navLinks.setAttribute('aria-hidden', 'false');
+				// focus first link for keyboard users
+				const firstLink = navLinks.querySelector('a');
+				if (firstLink) firstLink.focus();
+			};
+
+			toggle.addEventListener('click', function (e) {
+				if (nav.classList.contains('open')) closeMenu();
+				else openMenu();
+			});
+
+			// close when any nav link is clicked (mobile UX)
+			navLinks.addEventListener('click', function (e) {
+				if (e.target.tagName.toLowerCase() === 'a') closeMenu();
+			});
+
+			// close on outside click
+			document.addEventListener('click', function (e) {
+				if (!nav.classList.contains('open')) return;
+				if (!nav.contains(e.target)) closeMenu();
+			});
+
+			// close on Escape
+			document.addEventListener('keydown', function (e) {
+				if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
+			});
+
+			// init aria-hidden state
+			navLinks.setAttribute('aria-hidden', 'true');
+		})();
+	</script>
 </body>
 
 </html>

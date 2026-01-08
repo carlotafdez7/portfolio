@@ -4,3 +4,88 @@
 @import url(reset.css);
 @import url(theme.css);
 @import url(navigation.css);
+
+
+/* =====================================================
+   MOBILE FIXES (NO TOCA DESKTOP)
+   Pegar al FINAL de assets/css/index.css
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    /* 0) Evitar scroll horizontal por widths raras */
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* 1) Nada puede “salirse” del viewport */
+    * {
+        max-width: 100%;
+    }
+
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* 2) Container más cómodo en móvil */
+    .container {
+        width: min(92%, 720px);
+    }
+
+    /* 3) ABOUT: si tienes texto + foto lado a lado, en móvil en columna */
+    .about-intro {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: var(--space-lg) !important;
+    }
+
+    .about-photo img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: var(--radius-lg);
+    }
+
+    /* Skills: 1 columna en móvil (si ahora te queda apretado) */
+    .skills-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* 4) WORK grid: 1 columna en móvil */
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    /* 5) Cards internas (las de cada sección: editorial/ilustración/photo/branding/motion)
+	      Si alguna está en 2 columnas, esto la fuerza a 1 en móvil */
+    :where(.editorial-project,
+        .photo-project,
+        .photography-project,
+        .illustration-project,
+        .branding-project,
+        .motion-project,
+        .motion-graphics-project) {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: var(--space-lg) !important;
+    }
+
+    /* 6) Carousels: altura razonable en móvil (evita que se aplasten) */
+    :where(.carousel, .carousel-track, .carousel__track, .carousel-viewport) {
+        min-height: clamp(220px, 45vw, 360px);
+    }
+
+    /* 7) Si algún bloque usa 100vw (típico causante de overflow), lo neutralizamos */
+    :where(section, .section, header, main, footer) {
+        width: 100%;
+    }
+}
