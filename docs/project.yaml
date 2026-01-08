@@ -1,50 +1,78 @@
-# Project metadata - fill this out by Week 4
-# This file will be used to generate your entry in the course showroom
+# Project metadata - Web Design 2025
+# This file is used to generate the course showroom entry
 
+# -------------------------------------------------------------------
 # Basic information
-handle: your-github-username
-name: Your Full Name
-email: your-email@udit.es
+# -------------------------------------------------------------------
+handle: carlotafdez7
+name: Carlota Fernández
+email: carlota.fernandez@udit.es
 
-# URLs (will be auto-generated if you follow naming conventions)
-github_url: https://github.com/your-username
-project_url: https://your-username.github.io/your-project-repo
-repository_url: https://github.com/your-username/your-project-repo
+# -------------------------------------------------------------------
+# URLs
+# -------------------------------------------------------------------
+github_url: https://github.com/carlotafdez7
+repository_url: https://github.com/carlotafdez7/portfolio
+project_url: https://carlotafdez7.github.io/portfolio
 
+# -------------------------------------------------------------------
 # Project details
+# -------------------------------------------------------------------
 title:
-  es: Título de tu Proyecto en Español
-  en: Your Project Title in English
+  es: Portfolio creativo de diseño gráfico y fotografía
+  en: Creative portfolio for graphic design and photography
 
 abstract:
   es: |
-    Una descripción concisa de tu proyecto web en español. 
-    Explica qué construyes, para quién y por qué es importante.
+    Portfolio web personal diseñado y desarrollado para presentar
+    proyectos de diseño gráfico, ilustración, fotografía analógica,
+    motion graphics y branding. El proyecto combina una estética
+    editorial con animaciones suaves y un enfoque mobile-first,
+    priorizando la jerarquía visual, la accesibilidad y la experiencia
+    de usuario.
   en: |
-    A concise description of your web project in English.
-    Explain what you're building, for whom, and why it matters.
+    Personal web portfolio designed and developed to showcase
+    graphic design, illustration, analog photography, motion graphics
+    and branding projects. The project combines an editorial aesthetic
+    with subtle animations and a mobile-first approach, prioritizing
+    visual hierarchy, accessibility and user experience.
 
-# Technical tags (choose relevant ones)
+# -------------------------------------------------------------------
+# Technical tags
+# -------------------------------------------------------------------
 tags:
   - html5
   - css3
+  - javascript
   - responsive-design
+  - mobile-first
   - accessibility
-  # Add more as relevant: javascript, sass, performance, etc.
+  - css-animations
+  - parallax
+  - glassmorphism
 
-# Learning objectives you're focusing on
+# -------------------------------------------------------------------
+# Learning objectives
+# -------------------------------------------------------------------
 learning_focus:
   - semantic-html
   - mobile-first-design
+  - responsive-layouts
   - web-accessibility
-  # Add more as you progress
+  - css-animations
+  - scroll-interactions
+  - design-systems
 
-# Week tracking (update as you go)
+# -------------------------------------------------------------------
+# Milestones tracking
+# -------------------------------------------------------------------
 milestones:
-  week_1_setup: false
-  week_2_brief: false
-  week_4_metadata: false
+  week_1_setup: true
+  week_2_brief: true
+  week_4_metadata: true
   week_5_showcase: false
 
-# Optional: link to your project brief
-brief_url: project-brief.md
+# -------------------------------------------------------------------
+# Documentation
+# -------------------------------------------------------------------
+brief_url: docs/project-brief.md

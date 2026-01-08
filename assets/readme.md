@@ -1,149 +1,211 @@
-# Portfolio — Carlota Fernández  
-**Sitio en vivo:** https://carlotafdez7.github.io/portfolio/
+#  Portfolio — Diseño Gráfico y Visual
+
+ **Deploy:**  
+ https://carlotafdez7.github.io/portfolio/
 
 ---
 
 ## Descripción del proyecto
-Este proyecto es un portfolio personal diseñado para mostrar mi trabajo como diseñadora gráfica, ilustradora y creadora visual, con especial atención al diseño editorial, la fotografía, los motion graphics y el branding.
 
-El objetivo no es solo presentar los proyectos de forma visual, sino también demostrar un flujo de trabajo profesional en front-end, utilizando HTML semántico, CSS moderno y JavaScript en estado puro (vanilla).
+Este proyecto consiste en el desarrollo de mi **portfolio personal como diseñadora gráfica**, ilustradora y fotógrafa, construido íntegramente con **HTML, CSS y JavaScript vanilla**, sin frameworks ni librerías externas.
+
+El objetivo principal ha sido crear una web **visual, coherente y profesional** que represente mi identidad como diseñadora, pero también demostrar de forma práctica los conocimientos adquiridos durante el curso en **diseño web, arquitectura CSS, animaciones, responsive design y control de versiones**.
+
+El portfolio recoge distintos tipos de proyectos:
+
+- Editorial  
+- Ilustración  
+- Fotografía  
+- Motion graphics  
+- Branding  
+
+Todos ellos organizados por secciones, con especial atención al **ritmo visual**, la **jerarquía tipográfica** y la **experiencia de usuario**.
+
+---
+
+## Enfoque y objetivos de aprendizaje
+
+Durante el desarrollo de este proyecto he trabajado especialmente:
+
+- Diseño **mobile-first** y responsive  
+- Arquitectura CSS modular y escalable  
+- Uso de **CSS moderno** (`clamp()`, Grid, Flexbox, `backdrop-filter`, `animation-timeline`)  
+- Animaciones ligadas al scroll con **IntersectionObserver**  
+- Control de versiones profesional con **Git y GitHub**  
+- Documentación del proceso de diseño y desarrollo  
+- Uso responsable y documentado de **IA como apoyo**, no como sustituto  
 
 ---
 
 ## Stack tecnológico
-- **HTML5** — estructura semántica y accesibilidad
-- **CSS3** — Grid, Flexbox, tipografía fluida con `clamp()`, animaciones modernas
-- **JavaScript (Vanilla)** — IntersectionObserver, scroll suave, estados activos de navegación
-- **Git & GitHub** — control de versiones y despliegue
+
+- **HTML5 semántico**
+- **CSS3 moderno**
+  - CSS Custom Properties (design tokens)
+  - Grid & Flexbox
+  - Animaciones con `@keyframes`
+  - Parallax con `animation-timeline: scroll()`
+- **JavaScript Vanilla**
+  - IntersectionObserver
+  - Scroll suave
+  - Menú hamburguesa accesible
+- **Git & GitHub**
+- **GitHub Pages** (despliegue)
 
 ---
 
-## Diario de desarrollo
+## Estructura del proyecto
+portfolio/
+├── index.html
+├── 404.html
+├── assets/
+│ ├── css/
+│ │ ├── base/
+│ │ ├── layout/
+│ │ ├── components/
+│ │ └── index.css
+│ ├── js/
+│ │ └── main.js
+│ └── img/
+│ ├── editorial/
+│ ├── ilustracion/
+│ ├── fotografia/
+│ ├── branding/
+│ └── motion-graphics/
+├── docs/
+│ ├── plan1.md
+│ ├── plan2.md
+│ └── plan3.md
+├── README.md
+├── LICENSE
+└── .gitignore
 
-Esta sección documenta el proceso de desarrollo de forma académica y reflexiva, incluyendo errores, aprendizajes y soluciones.
-
-### Día 1 — Configuración inicial y estructura
-**Qué hice**
-- Creación de la estructura base del HTML usando etiquetas semánticas.
-- Organización de carpetas (`assets/css`, `assets/js`, `assets/img`).
-- Inicialización del repositorio en GitHub.
-
-**Problemas**
-- Dudas sobre cómo estructurar correctamente los archivos CSS.
-- Confusión inicial sobre el orden de carga del JavaScript.
-
-**Qué aprendí**
-- Una buena estructura de carpetas facilita el mantenimiento y la escalabilidad.
-- El uso del atributo `defer` permite que el JavaScript se cargue sin bloquear el HTML.
-
-**Cómo lo resolví**
-- Separé el CSS en secciones lógicas.
-- Añadí `defer` al archivo `main.js`.
-
----
-
-### Día 2 — Layout y diseño responsive
-**Qué hice**
-- Construcción de las secciones Hero, About y Work.
-- Implementación de layouts con CSS Grid y Flexbox.
-- Aplicación de tipografía fluida con `clamp()`.
-
-**Problemas**
-- Falta de espacio vertical entre secciones.
-- Algunos layouts se rompían en pantallas pequeñas.
-
-**Qué aprendí**
-- El ritmo vertical es clave en el diseño web.
-- Pensar mobile-first reduce problemas posteriores.
-
-**Cómo lo resolví**
-- Ajusté los márgenes y paddings usando variables CSS.
-- Añadí breakpoints progresivos.
 
 ---
 
-### Día 3 — Animaciones e interacción
-**Qué hice**
-- Implementación de animaciones al hacer scroll usando IntersectionObserver.
-- Uso de parallax con CSS moderno (`animation-timeline`).
-- Micro-interacciones en tarjetas y botones.
+##  Control de versiones y flujo de trabajo
 
-**Problemas**
-- Las animaciones no se activaban inicialmente.
-- Algunos efectos resultaban demasiado bruscos.
+Desde el inicio del proyecto he trabajado con un **repositorio en GitHub**, manteniendo un flujo de trabajo constante y organizado:
 
-**Qué aprendí**
-- Es importante separar responsabilidades entre JavaScript (lógica) y CSS (animación).
-- Las animaciones sutiles funcionan mejor a nivel profesional.
-
-**Cómo lo resolví**
-- Inicialicé correctamente los observers en `main.js`.
-- Ajusté distancias y duraciones de las animaciones.
+- Commits frecuentes y descriptivos  
+- Separación por funcionalidades (estructura, secciones, animaciones, responsive, etc.)  
+- Actualización continua del README para documentar decisiones y aprendizajes  
+- Preparación del proyecto para una **release final (v1.0.0)**  
 
 ---
 
-### Día 4 — Contenido y refinamiento visual
-**Qué hice**
-- Desarrollo de secciones específicas: Editorial, Fotografía, Ilustración, Motion Graphics y Branding.
-- Implementación de carruseles de imágenes y vídeos.
-- Refinamiento de tipografía, color y jerarquía visual.
+##  Uso de Inteligencia Artificial (IA)
 
-**Problemas**
-- Desalineación entre secciones.
-- Ajuste fino del comportamiento de los carruseles.
+Durante el desarrollo del proyecto he utilizado **IA (ChatGPT)** como **herramienta de apoyo**, principalmente para:
 
-**Qué aprendí**
-- Mantener anchos coherentes entre secciones mejora la consistencia visual.
-- Los carruseles en CSS requieren cálculos precisos.
+- Planificar soluciones antes de implementarlas  
+- Resolver bloqueos técnicos complejos  
+- Revisar arquitectura CSS y enfoque responsive  
+- Comprender mejor conceptos avanzados (IntersectionObserver, parallax, mobile-first)  
 
-**Cómo lo resolví**
-- Unifiqué contenedores y anchos.
-- Reescribí las animaciones de los carruseles.
-
----
-
-### Mejoras en curso
-- Optimización de accesibilidad
-- Mejora del rendimiento
-- Limpieza de código y documentación
-
----
-
-## Política de uso de IA (obligatoria)
-Este proyecto se ha desarrollado con ayuda de asistentes de IA siguiendo un flujo en **dos fases**:
+ **La IA no ha generado el proyecto completo**, sino que se ha utilizado como un **asistente**, siguiendo siempre un flujo en dos fases:
 
 ### Fase 1 — Planificación
-Antes de implementar cualquier funcionalidad, se solicitó a la IA un plan de desarrollo.
+Antes de implementar cambios importantes, se solicitó a la IA un **plan de acción**, que quedaba documentado.
 
 ### Fase 2 — Implementación
-Solo tras documentar dicho plan se procedió a la implementación del código.
+Una vez entendido el plan, la implementación se realizó manualmente.
 
-Los planes se documentan en la carpeta `docs/`:
+Esta planificación se recoge en los archivos:
+
 - `docs/plan1.md`
 - `docs/plan2.md`
 - `docs/plan3.md`
 
 ---
 
-## Desarrollo en local
+##  Proceso de desarrollo (diario reflexivo)
 
-### Opción A — Live Server (recomendado)
-1. Abrir el proyecto en VS Code
-2. Instalar la extensión **Live Server**
-3. Clic derecho en `index.html` → **Open with Live Server**
+### 1 Estructura inicial
 
-### Opción B — Apertura directa
-Abrir `index.html` en el navegador.
+El primer reto fue definir la estructura general del portfolio: qué secciones debía incluir y cómo organizar los proyectos.  
+Decidí separar el contenido por **disciplinas**, ya que refleja mejor mi perfil como diseñadora multidisciplinar.
 
 ---
 
-## Personalización
-- **Contenido:** editar `index.html`
-- **Imágenes:** reemplazar archivos en `assets/img/`
-- **Colores y tipografía:** modificar variables en `:root`
-- **Enlaces:** actualizar links de contacto y redes sociales
+### 2 Diseño visual y tipografía
+
+Uno de los aspectos clave fue el sistema tipográfico. Se implementó una **escala fluida con `clamp()`**, permitiendo que los textos se adaptaran de forma natural a distintos tamaños de pantalla sin depender de breakpoints rígidos.
 
 ---
 
-## Licencia
-MIT License — ver archivo `LICENSE`.
+### 3 Animaciones y scroll
+
+Se trabajaron animaciones ligadas al scroll mediante **IntersectionObserver**. Al principio las animaciones no se activaban correctamente, lo que me obligó a entender mejor cómo funciona la detección de elementos en viewport y la relación entre JavaScript y CSS.
+
+---
+
+### 4 Carruseles, imágenes y vídeo
+
+Se implementaron carruseles de imágenes y vídeos para mostrar proyectos de motion graphics.  
+Aquí surgieron problemas especialmente en móvil:
+
+- Imágenes recortadas  
+- Vídeos mal escalados  
+- Alturas inconsistentes  
+
+Estos problemas se resolvieron ajustando `object-fit`, `aspect-ratio` y replanteando el layout desde un enfoque mobile-first.
+
+---
+
+### 5 Responsive design (el mayor reto)
+
+Aunque el diseño funcionaba correctamente en desktop, en móvil aparecieron numerosos errores. Esto me obligó a:
+
+- Replantear la arquitectura CSS  
+- Simplificar layouts complejos  
+- Forzar grids de una sola columna en móvil  
+- Revisar desbordamientos horizontales  
+
+Este proceso fue largo, pero fundamental para entender el **responsive design real**, más allá de la teoría.
+
+---
+
+### 6 Página 404 personalizada
+
+Se creó una página **404 personalizada**, coherente con el estilo del portfolio, incluyendo:
+
+- Mensaje claro de error  
+- Tono cercano y creativo  
+- Enlace de vuelta a la página principal  
+
+---
+
+## Accesibilidad y buenas prácticas
+
+- HTML semántico  
+- Jerarquía correcta de encabezados  
+- Uso de `aria-label`  
+- Menú hamburguesa accesible  
+- Respeto a `prefers-reduced-motion`  
+
+---
+
+## 7 Aprendizajes principales
+
+- La importancia de planificar antes de escribir código  
+- La diferencia entre que algo “funcione” y que esté bien estructurado  
+- El valor del control de versiones y la documentación  
+- Cómo enfrentarse a bloqueos técnicos sin abandonar  
+- Uso ético y consciente de la IA como apoyo al aprendizaje  
+
+---
+
+## 8  ©Licencia
+
+Este proyecto está licenciado bajo la licencia **MIT**.  
+Consulta el archivo `LICENSE` para más información.
+
+---
+
+## 9 Agradecimientos
+
+Agradeimiento especial a ti Rubén porque nunca me habría visto capaz de hacerme un portfolio, programado por mi misma , de hecho una de las razones por las que me cambié de carrera fué la cantidad de programación que había, y realmente se me ha quitado el miedo al código este cuatri y lo estoy llegando a disfrutar jajajaja, puede llegar a ser divertido asi que gracias porque nunca lo habría imaginado y estoy muy contenta.
+
+
+
