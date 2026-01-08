@@ -217,6 +217,7 @@
 			rgb(78, 28, 38));
 }
 
+
 /* --------------------------------------------------------------------------
    EDITORIAL — Cover limpio (como Photography) + 2 tarjetas + carrusel
    -------------------------------------------------------------------------- */
@@ -295,6 +296,11 @@
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	box-shadow: var(--shadow-md);
 }
+
+.editorial .editorial-project {
+	background: var(--card-editorial);
+}
+
 
 /* Texto */
 .editorial-text h3 {
@@ -1138,10 +1144,10 @@
 
 	/* Animated gradient */
 	background: linear-gradient(-45deg,
-			#ff4d6d,
-			#ff758f,
-			#6c63ff,
-			#4dd0e1);
+			#d6536b,
+			#d16b7e,
+			#5853af,
+			#62c0cc);
 	background-size: 400% 400%;
 	animation: gradientMove 18s ease infinite;
 
