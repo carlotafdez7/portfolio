@@ -129,9 +129,9 @@
 	 * Dark theme with indigo accent. Limited palette = cohesive design.
 	 * Semantic naming (bg, text, accent) makes colors self-documenting.
 	 */
-	--color-bg: #1a1818;
+	--color-bg: #161616;
 	/* Near-black background */
-	--color-bg-alt: #242222;
+	--color-bg-alt: #161616;
 	/* Slightly lighter for depth/sections */
 	--color-text: #f5f5f5;
 	/* Off-white for readability (not pure white) */
@@ -192,9 +192,9 @@
 
 
 	/* Card backgrounds per section */
-	--card-editorial: rgba(224, 78, 78, 0.288);
-	--card-photography: rgba(67, 64, 209, 0.466);
-	--card-illustration: rgba(255, 255, 255, 0.05);
-	--card-motion: rgba(255, 255, 255, 0.07);
-	--card-branding: rgba(255, 255, 255, 0.06);
+	--card-editorial: rgba(184, 193, 240, 0.055);
+	--card-photography: rgba(184, 193, 240, 0.055);
+	--card-illustration: rgba(184, 193, 240, 0.055);
+	--card-motion: rgba(184, 193, 240, 0.0552);
+	--card-branding: rgba(184, 193, 240, 0.055);
 }
