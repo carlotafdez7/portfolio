@@ -126,3 +126,68 @@ a {
 	outline: 2px solid var(--color-accent);
 	outline-offset: 3px;
 }
+
+/* ==============================
+   RESPONSIVE FIXES (MOBILE FIRST)
+   Pegar al FINAL del index.css
+   ============================== */
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+img,
+video {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Work grid: móvil 1 columna */
+.projects-grid {
+	grid-template-columns: 1fr;
+}
+
+/* Work grid: tablet */
+@media (min-width: 640px) {
+	.projects-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Work grid: desktop */
+@media (min-width: 1024px) {
+	.projects-grid {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+/* Editorial + Photography cards: móvil 1 columna */
+.editorial-project,
+.photo-project {
+	grid-template-columns: 1fr;
+	gap: var(--space-lg);
+}
+
+/* Carruseles: altura adaptable (móvil y desktop) */
+.editorial-carousel,
+.photo-carousel {
+	height: clamp(240px, 45vw, 520px);
+}
+
+/* Desktop: 2 columnas (texto izquierda + carrusel derecha) */
+@media (min-width: 900px) {
+
+	.editorial-project,
+	.photo-project {
+		grid-template-columns: 0.75fr 1.25fr;
+		gap: clamp(2rem, 4vw, 4rem);
+	}
+}
+
+/* Evita que 100vw genere scroll horizontal */
+.editorial-cover,
+.photo-cover {
+	max-width: 100%;
+}
