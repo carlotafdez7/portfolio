@@ -1,103 +1,149 @@
-# Portfolio de Diseño Gráfico
-
-Portfolio personal desarrollado con **HTML, CSS y JavaScript vanilla**, partiendo de una plantilla base y adaptándola progresivamente hacia un portfolio profesional de diseño gráfico.
-
-Este repositorio se documenta con un **enfoque académico**, registrando errores, aprendizajes y soluciones técnicas en cada etapa del desarrollo.
-
-> Nota:  
-> El portfolio (interfaz y contenidos) está en **inglés** por motivos profesionales.  
-> La documentación se presenta en **español** con fines académicos.
+# Portfolio — Carlota Fernández  
+**Sitio en vivo:** https://carlotafdez7.github.io/portfolio/
 
 ---
 
-## Objetivos del proyecto
+## Descripción del proyecto
+Este proyecto es un portfolio personal diseñado para mostrar mi trabajo como diseñadora gráfica, ilustradora y creadora visual, con especial atención al diseño editorial, la fotografía, los motion graphics y el branding.
 
-- Construir un portfolio web moderno, accesible y responsive.
-- Aplicar principios de **diseño de sistemas** mediante CSS Custom Properties.
-- Implementar animaciones performantes y accesibles.
-- Utilizar buenas prácticas de Git con commits claros y documentados.
-- Reflexionar sobre errores y decisiones técnicas durante el proceso.
+El objetivo no es solo presentar los proyectos de forma visual, sino también demostrar un flujo de trabajo profesional en front-end, utilizando HTML semántico, CSS moderno y JavaScript en estado puro (vanilla).
 
 ---
 
-## Tecnologías utilizadas
-
-- HTML5 semántico
-- CSS3 (Custom Properties, Grid, Flexbox, clamp)
-- JavaScript Vanilla
-- IntersectionObserver API
-- Visual Studio Code
-- Git
+## Stack tecnológico
+- **HTML5** — estructura semántica y accesibilidad
+- **CSS3** — Grid, Flexbox, tipografía fluida con `clamp()`, animaciones modernas
+- **JavaScript (Vanilla)** — IntersectionObserver, scroll suave, estados activos de navegación
+- **Git & GitHub** — control de versiones y despliegue
 
 ---
 
-## Estructura del proyecto
-assets/
-├── css/
-│ ├── reset.css
-│ ├── base.css
-│ ├── theme.css
-│ ├── layout.css
-│ ├── navigation.css
-│ ├── components.css
-│ └── index.css
-└── js/
-└── main.js
-index.html
-README.md
+## Diario de desarrollo
 
+Esta sección documenta el proceso de desarrollo de forma académica y reflexiva, incluyendo errores, aprendizajes y soluciones.
 
-## Registro académico del desarrollo
+### Día 1 — Configuración inicial y estructura
+**Qué hice**
+- Creación de la estructura base del HTML usando etiquetas semánticas.
+- Organización de carpetas (`assets/css`, `assets/js`, `assets/img`).
+- Inicialización del repositorio en GitHub.
 
-### Commit 1 — Establecimiento de la línea base del proyecto
+**Problemas**
+- Dudas sobre cómo estructurar correctamente los archivos CSS.
+- Confusión inicial sobre el orden de carga del JavaScript.
 
-**Qué se hizo**
-- Limpieza y adaptación del HTML base.
-- Corrección del idioma del documento y título del sitio.
-- Aplicación del atributo `defer` al script principal.
-- Definición de un sistema de diseño con CSS Custom Properties.
-- Corrección y mejora de estilos base y accesibilidad.
-- Integración coherente de componentes visuales con tokens de diseño.
+**Qué aprendí**
+- Una buena estructura de carpetas facilita el mantenimiento y la escalabilidad.
+- El uso del atributo `defer` permite que el JavaScript se cargue sin bloquear el HTML.
 
-**Errores o problemas detectados**
-- Uso incorrecto del selector `body body`, lo que impedía que los estilos se aplicaran.
-- Intento de anidar `:focus-visible` dentro de otro selector, lo cual no es válido en CSS plano.
-- Uso de valores “hardcodeados” (px fijos) que rompían la coherencia visual.
-
-**Aprendizajes**
-- Los selectores CSS no se anidan de forma nativa.
-- `:focus-visible` debe declararse como regla independiente.
-- El atributo `defer` permite cargar JavaScript sin bloquear el parseo del HTML.
-- Los design tokens permiten un diseño más escalable y mantenible.
-- Accesibilidad y rendimiento deben considerarse desde el inicio, no al final.
-
-**Soluciones aplicadas**
-- Corrección del selector a `body`.
-- Reubicación correcta de `:focus-visible`.
-- Sustitución de valores fijos por variables CSS.
-- Implementación de un sistema de tokens para tipografía, espaciado, color y superficie.
-- Mejora de estados `hover` y `focus-visible` en componentes interactivos.
+**Cómo lo resolví**
+- Separé el CSS en secciones lógicas.
+- Añadí `defer` al archivo `main.js`.
 
 ---
 
-## Convención de commits
+### Día 2 — Layout y diseño responsive
+**Qué hice**
+- Construcción de las secciones Hero, About y Work.
+- Implementación de layouts con CSS Grid y Flexbox.
+- Aplicación de tipografía fluida con `clamp()`.
 
-Se utiliza una convención inspirada en **Conventional Commits**:
+**Problemas**
+- Falta de espacio vertical entre secciones.
+- Algunos layouts se rompían en pantallas pequeñas.
 
-- `chore:` tareas de configuración o base del proyecto
-- `style:` cambios visuales (CSS)
-- `fix:` corrección de errores
-- `feat:` nuevas funcionalidades
-- `docs:` documentación
+**Qué aprendí**
+- El ritmo vertical es clave en el diseño web.
+- Pensar mobile-first reduce problemas posteriores.
 
-> Regla del proyecto:  
-> A partir del **commit 3**, cada commit incluye una actualización del README documentando el proceso.
+**Cómo lo resolví**
+- Ajusté los márgenes y paddings usando variables CSS.
+- Añadí breakpoints progresivos.
 
 ---
 
-## Próximos pasos
+### Día 3 — Animaciones e interacción
+**Qué hice**
+- Implementación de animaciones al hacer scroll usando IntersectionObserver.
+- Uso de parallax con CSS moderno (`animation-timeline`).
+- Micro-interacciones en tarjetas y botones.
 
-- Definir layout y ritmo vertical del sitio.
-- Ajustar navegación y jerarquía visual.
-- Convertir proyectos en **casos de estudio**.
-- Optimizar accesibilidad y experiencia de usuario.
+**Problemas**
+- Las animaciones no se activaban inicialmente.
+- Algunos efectos resultaban demasiado bruscos.
+
+**Qué aprendí**
+- Es importante separar responsabilidades entre JavaScript (lógica) y CSS (animación).
+- Las animaciones sutiles funcionan mejor a nivel profesional.
+
+**Cómo lo resolví**
+- Inicialicé correctamente los observers en `main.js`.
+- Ajusté distancias y duraciones de las animaciones.
+
+---
+
+### Día 4 — Contenido y refinamiento visual
+**Qué hice**
+- Desarrollo de secciones específicas: Editorial, Fotografía, Ilustración, Motion Graphics y Branding.
+- Implementación de carruseles de imágenes y vídeos.
+- Refinamiento de tipografía, color y jerarquía visual.
+
+**Problemas**
+- Desalineación entre secciones.
+- Ajuste fino del comportamiento de los carruseles.
+
+**Qué aprendí**
+- Mantener anchos coherentes entre secciones mejora la consistencia visual.
+- Los carruseles en CSS requieren cálculos precisos.
+
+**Cómo lo resolví**
+- Unifiqué contenedores y anchos.
+- Reescribí las animaciones de los carruseles.
+
+---
+
+### Mejoras en curso
+- Optimización de accesibilidad
+- Mejora del rendimiento
+- Limpieza de código y documentación
+
+---
+
+## Política de uso de IA (obligatoria)
+Este proyecto se ha desarrollado con ayuda de asistentes de IA siguiendo un flujo en **dos fases**:
+
+### Fase 1 — Planificación
+Antes de implementar cualquier funcionalidad, se solicitó a la IA un plan de desarrollo.
+
+### Fase 2 — Implementación
+Solo tras documentar dicho plan se procedió a la implementación del código.
+
+Los planes se documentan en la carpeta `docs/`:
+- `docs/plan1.md`
+- `docs/plan2.md`
+- `docs/plan3.md`
+
+---
+
+## Desarrollo en local
+
+### Opción A — Live Server (recomendado)
+1. Abrir el proyecto en VS Code
+2. Instalar la extensión **Live Server**
+3. Clic derecho en `index.html` → **Open with Live Server**
+
+### Opción B — Apertura directa
+Abrir `index.html` en el navegador.
+
+---
+
+## Personalización
+- **Contenido:** editar `index.html`
+- **Imágenes:** reemplazar archivos en `assets/img/`
+- **Colores y tipografía:** modificar variables en `:root`
+- **Enlaces:** actualizar links de contacto y redes sociales
+
+---
+
+## Licencia
+MIT License — ver archivo `LICENSE`.

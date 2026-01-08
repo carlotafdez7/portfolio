@@ -23,7 +23,13 @@
    -------------------------------------------------------------------------- */
 .about {
 	background: var(--color-bg-alt);
+
+	/* Espacio entre About y Work */
+	.about-grid {
+		padding-bottom: clamp(4rem, 8vw, 9rem);
+	}
 }
+
 
 .about-grid {
 	display: grid;
@@ -81,6 +87,7 @@
 	border-radius: 999px;
 	transition: width 1s var(--ease-out) 0.3s;
 }
+
 
 /* Animate skill bars when revealed */
 [data-reveal-stagger].revealed .skill-fill {
@@ -152,12 +159,11 @@
 	color: rgb(255, 255, 255);
 }
 
-
-
 /* Projects full-width override */
 .projects .container {
 	width: min(96%, 1600px);
 }
+
 
 /* Tarjetas botones te llevan a sección*/
 .project-link {
@@ -1122,21 +1128,75 @@
 	}
 }
 
-
 /* --------------------------------------------------------------------------
-   9. Contact Section
+   9. Contact Section — Animated Gradient Background
    -------------------------------------------------------------------------- */
 .contact {
-	background: var(--color-bg-alt);
+	position: relative;
+	overflow: hidden;
 	text-align: center;
+
+	/* Animated gradient */
+	background: linear-gradient(-45deg,
+			#ff4d6d,
+			#ff758f,
+			#6c63ff,
+			#4dd0e1);
+	background-size: 400% 400%;
+	animation: gradientMove 18s ease infinite;
+
+	color: white;
 }
 
+/* Optional soft grain overlay (very subtle) */
+.contact::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+	pointer-events: none;
+}
+
+/* Content stays above gradient */
+.contact .container {
+	position: relative;
+	z-index: 1;
+}
+
+@keyframes gradientMove {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Text */
 .contact-content p {
 	font-size: var(--text-lg);
-	color: var(--color-text-muted);
+	color: rgba(255, 255, 255, 0.85);
 	margin-bottom: var(--space-lg);
 }
 
+/* Button contrast */
+.contact .btn {
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	color: white;
+}
+
+.contact .btn:hover {
+	background: rgba(255, 255, 255, 0.25);
+}
+
+/* Social links */
 .social-links {
 	display: flex;
 	justify-content: center;
@@ -1145,13 +1205,14 @@
 }
 
 .social-links a {
-	color: var(--color-text-muted);
-	transition: color 0.3s;
+	color: rgba(255, 255, 255, 0.75);
+	transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-links a:hover,
 .social-links a:focus-visible {
-	color: var(--color-accent);
+	color: white;
+	transform: translateY(-2px);
 }
 
 /* --------------------------------------------------------------------------
