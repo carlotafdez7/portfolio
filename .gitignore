@@ -1,1 +1,18 @@
 .DS_Store
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Node 
+node_modules/
+
+# Builds 
+dist/
+build/
